@@ -6,11 +6,6 @@
 # We support interacting with a variety of data stores including local file systems, cloud, network and HDFS
 #
 
-input:
+example_iris_data:
   type: pandas.CSVDataSet
-  filepath: https://raw.githubusercontent.com/Opensourcefordatascience/Data-sets/master/blood_pressure.csv
-
-output:
-  type: pandas.ParquetDataSet
-  filepath: data/08_reporting/output.pq
-  layer: reporting
+  filepath: data/01_raw/iris.csv
