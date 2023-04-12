@@ -169,3 +169,5 @@ mlflow.sqlite.db
 .ipython
 .pytest_cache
 .dive-ci
+
+.terraform
