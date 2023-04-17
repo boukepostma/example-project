@@ -94,3 +94,14 @@ kedro run -p "<PIPELINE_NAME>"
 - configuration can be specified inside `conf/<ENV>/mlflow.yml` file
 - by default, experiments are saved inside `mlruns` local directory
 - to see all the local experiments, run `kedro mlflow ui`
+
+#### Configuring kedro-mlflow:
+1. Login and configure workspace
+```bash
+az account set --subscription <subscription>
+az configure --defaults workspace=<workspace> group=<resource-group> location=<location>
+```
+2. You can get tracking URI using `az ml workspace` command 
+```bash
+az ml workspace show --query mlflow_tracking_uri
+```

@@ -6,6 +6,28 @@
 # We support interacting with a variety of data stores including local file systems, cloud, network and HDFS
 #
 
-example_iris_data:
+labels:
   type: pandas.CSVDataSet
   filepath: data/01_raw/iris.csv
+  load_args:
+    usecols: [species]
+
+raw_inputs:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/iris.csv
+  load_args:
+    usecols: [sepal_length, sepal_width, petal_length, petal_width]
+
+trained_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/trained_model.pkl
+
+accuracy:
+  type: kedro_mlflow.io.metrics.MlflowMetricDataSet
+
+pipeline_inference_model:
+  type: kedro_mlflow.io.models.MlflowModelLoggerDataSet
+  flavor: mlflow.pyfunc
+  pyfunc_workflow: python_model
+  artifact_path: new_quickstart_ml_project # the name of your mlflow folder = the model_name in pipeline_ml_factory
+  run_id: ${run_id_to_serve}

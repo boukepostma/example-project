@@ -1,0 +1,19 @@
+# run_id: azureml_5b10d401-f673-40b7-bb8b-70d489f14696
+# run_id: 817e3abb-4c6d-4ba8-a1be-05ef9de09f89
+
+model_name: some_registered_model_name
+
+endpoint_name: test
+endpoint_config:
+  auth_mode: key
+  identity:
+    type: system_assigned
+
+deployment_name: blue
+deploy_config:
+  instance_type: Standard_DS2_v2
+  instance_count: 1
+
+traffic_config:
+  traffic:
+    blue: 100
