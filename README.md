@@ -105,3 +105,5 @@ az configure --defaults workspace=<workspace> group=<resource-group> location=<l
 ```bash
 az ml workspace show --query mlflow_tracking_uri
 ```
+
+3. Place this URI in `mlflow.yml` under `server.mlflow_tracking_uri` 
