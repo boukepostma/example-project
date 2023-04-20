@@ -31,3 +31,7 @@ pipeline_inference_model:
   pyfunc_workflow: python_model
   artifact_path: new_quickstart_ml_project # the name of your mlflow folder = the model_name in pipeline_ml_factory
   run_id: ${run_id_to_serve}
+
+predictions:
+  type: pandas.ParquetDataSet
+  filepath: data/08_reporting/predictions.pq

@@ -60,6 +60,8 @@ def deploy(
             endpoint=endpoint_name,
             config={"endpoint-config-file": traffic_config_path},
         )
+        os.remove(traffic_config_path)
+        os.remove(deployment_config_path)
     except:
         os.remove(traffic_config_path)
         os.remove(deployment_config_path)

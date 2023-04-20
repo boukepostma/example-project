@@ -48,4 +48,4 @@ RUN pyenv rehash
 
 COPY . .
 
-CMD ["kedro", "run"]
+CMD ["streamlit", "run", "src/app_user/main.py"]

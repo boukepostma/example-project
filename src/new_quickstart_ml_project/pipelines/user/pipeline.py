@@ -13,9 +13,9 @@ def create_pipeline(**kwargs):
         [
             node(
                 func=predict_with_mlflow,
-                inputs=dict(model="pipeline_inference_model", data="raw_inputs"),
+                inputs=["pipeline_inference_model", "raw_inputs"],
                 outputs="predictions",
-                tags="user",
+                tags=["user"],
             )
         ]
     )

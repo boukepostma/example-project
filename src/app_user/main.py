@@ -36,6 +36,8 @@ catalog, conf_params = get_data_catalog("local")
 def load_data(_catalog, name: str) -> pd.DataFrame:
     return _catalog.load(name)
 
-df = load_data(catalog, "output")
+st.markdown("hello world")
+
+df = load_data(catalog, "predictions")
 
 st.dataframe(df)

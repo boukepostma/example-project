@@ -42,7 +42,8 @@ def register_pipelines() -> Dict[str, Pipeline]:
                     }
                 ]
             },
-            code_path=["pyproject.toml", "src/new_quickstart_ml_project"]
+            code_path=["pyproject.toml", "src/new_quickstart_ml_project"],
+            signature="auto",
         ),
     )
 
