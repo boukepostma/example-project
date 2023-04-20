@@ -8,7 +8,9 @@ from kedro.pipeline import Pipeline
 
 from kedro_mlflow.pipeline import pipeline_ml_factory
 from pip._internal.operations.freeze import freeze
+
 # from new_quickstart_ml_project import __version__ as PROJECT_VERSION
+
 
 def register_pipelines() -> Dict[str, Pipeline]:
     """Register the project's pipelines.
@@ -17,11 +19,11 @@ def register_pipelines() -> Dict[str, Pipeline]:
         A mapping from pipeline names to ``Pipeline`` objects.
     """
     pipelines = find_pipelines()
-    
+
     default_pipeline = sum(pipelines.values())
     training_pipeline = default_pipeline.only_nodes_with_tags("training")
     inference_pipeline = default_pipeline.only_nodes_with_tags("inference")
-    deploy_pipeline =  default_pipeline.only_nodes_with_tags("deployment")
+    deploy_pipeline = default_pipeline.only_nodes_with_tags("deployment")
     user_pipeline = default_pipeline.only_nodes_with_tags("user")
     etl_pipeline = default_pipeline.only_nodes_with_tags("etl")
 
@@ -37,11 +39,9 @@ def register_pipelines() -> Dict[str, Pipeline]:
                 "channels": ["conda-forge"],
                 "dependencies": [
                     f"python={python_version()}",
-                    *[pkg.replace("==", "=") for pkg in freeze() if 'pip' in pkg], 
-                    {
-                        "pip" : [pkg for pkg in freeze() if 'pip' not in pkg]
-                    }
-                ]
+                    *[pkg.replace("==", "=") for pkg in freeze() if "pip" in pkg],
+                    {"pip": [pkg for pkg in freeze() if "pip" not in pkg]},
+                ],
             },
             code_path=["pyproject.toml", "src/new_quickstart_ml_project"],
             signature="auto",
@@ -51,8 +51,8 @@ def register_pipelines() -> Dict[str, Pipeline]:
     return {
         "__default__": default_pipeline,
         "etl": etl_pipeline,
-        "training" : training_pipeline_ml,
+        "training": training_pipeline_ml,
         "inference": inference_pipeline,
-        "deploy" : deploy_pipeline,
+        "deploy": deploy_pipeline,
         "user": user_pipeline,
     }

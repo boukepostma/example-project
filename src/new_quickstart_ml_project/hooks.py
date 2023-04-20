@@ -9,7 +9,7 @@ class AzureSecretsHook:
         params = context.config_loader["parameters"]
 
         my_credential = DefaultAzureCredential()
-        
+
         secrets = {}
         for cred_name, secret_configs in params["secrets"].items():
             KVUri = f"https://{secret_configs['key_vault_name']}.vault.azure.net"
@@ -19,10 +19,12 @@ class AzureSecretsHook:
                 **secrets,
                 cred_name: {
                     "account_name": secret_configs["account_name"],
-                    "account_key": client.get_secret(secret_configs["storage_key_id"]).value,
-                }
+                    "account_key": client.get_secret(
+                        secret_configs["storage_key_id"]
+                    ).value,
+                },
             }
-        
+
         context.config_loader["credentials"] = {
             **context.config_loader["credentials"],
             **secrets,

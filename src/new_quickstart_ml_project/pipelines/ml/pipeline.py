@@ -12,9 +12,9 @@ def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(
         [
             node(
-                func = preprocess,
-                inputs = "inputs",
-                outputs= "features",
+                func=preprocess,
+                inputs="inputs",
+                outputs="features",
                 name="preprocess_features",
                 tags=["training", "inference"],
             ),

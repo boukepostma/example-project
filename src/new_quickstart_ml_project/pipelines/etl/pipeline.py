@@ -9,12 +9,14 @@ from .nodes import extract_transform_load
 
 
 def create_pipeline(**kwargs) -> Pipeline:
-    return pipeline([
-        node(
-                func = extract_transform_load,
-                inputs = "inputs_source",
-                outputs= "inputs",
+    return pipeline(
+        [
+            node(
+                func=extract_transform_load,
+                inputs="inputs_source",
+                outputs="inputs",
                 name="extract_transform_load",
                 tags=["etl"],
             ),
-    ])
+        ]
+    )
