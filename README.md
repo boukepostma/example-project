@@ -107,3 +107,8 @@ az ml workspace show --query mlflow_tracking_uri
 ```
 
 3. Place this URI in `mlflow.yml` under `server.mlflow_tracking_uri` 
+
+#### TODO: Things to automate in Terraform:
+	Keyvault access policy
+	storage container with project name (container name with - not _
+	setup az login inside container
