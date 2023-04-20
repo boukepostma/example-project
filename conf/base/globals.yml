@@ -1,4 +1,4 @@
 run_id_to_serve: 733fda27-35c4-491f-a989-ce0c56e6d380
 storage_name: mldev87147286st
-storage_container: new-quickstart-ml-project
+storage_prefix: abfs://new-quickstart-ml-project/
 key_vault_name: mldev87147286kv

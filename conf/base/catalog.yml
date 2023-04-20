@@ -20,14 +20,14 @@ inputs_source:
 
 inputs:
   type: pandas.CSVDataSet
-  filepath: abfs://${storage_container}/data/01_raw/iris.csv
+  filepath: ${storage_prefix}data/01_raw/iris.csv
   load_args:
     usecols: [sepal_length, sepal_width, petal_length, petal_width]
   credentials: abs_creds
 
 trained_model:
   type: pickle.PickleDataSet
-  filepath: data/06_models/trained_model.pkl
+  filepath: ${storage_prefix}data/06_models/trained_model.pkl
 
 accuracy:
   type: kedro_mlflow.io.metrics.MlflowMetricDataSet
@@ -41,4 +41,4 @@ pipeline_inference_model:
 
 predictions:
   type: pandas.ParquetDataSet
-  filepath: data/08_reporting/predictions.pq
+  filepath: ${storage_prefix}data/08_reporting/predictions.pq
