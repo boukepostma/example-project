@@ -29,4 +29,3 @@ class AzureSecretsHook:
             **context.config_loader["credentials"],
             **secrets,
         }
-        print(context.config_loader["credentials"])
