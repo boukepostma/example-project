@@ -26,7 +26,7 @@ tracking:
   # in a new mlflow run
 
   disable_tracking:
-    pipelines: ["__default__", "deploy", "inference", "user"]
+    pipelines: ["__default__", "deploy", "inference", "user", "etl"]
 
   experiment:
     name: new_quickstart_ml_project

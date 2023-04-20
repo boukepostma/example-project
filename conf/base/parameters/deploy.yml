@@ -17,3 +17,9 @@ deploy_config:
 traffic_config:
   traffic:
     blue: 100
+
+secrets: #map internal name to (storage_account_name, key) pairs
+  abs_creds:
+    key_vault_name: mldev87147286kv
+    account_name: mldev87147286st
+    storage_key_id: fb5e096a-7b6c-47e2-a6e4-d712e22f7f8e-70JOrGS88wPxXMVWrLUmRMNWZL1EdPhTwTyKurd-TkU

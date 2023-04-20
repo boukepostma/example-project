@@ -12,11 +12,18 @@ labels:
   load_args:
     usecols: [species]
 
-raw_inputs:
+inputs_source:
   type: pandas.CSVDataSet
   filepath: data/01_raw/iris.csv
   load_args:
     usecols: [sepal_length, sepal_width, petal_length, petal_width]
+
+inputs:
+  type: pandas.CSVDataSet
+  filepath: abfs://${storage_container}/data/01_raw/iris.csv
+  load_args:
+    usecols: [sepal_length, sepal_width, petal_length, petal_width]
+  credentials: abs_creds
 
 trained_model:
   type: pickle.PickleDataSet

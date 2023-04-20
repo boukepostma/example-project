@@ -23,11 +23,12 @@ def register_pipelines() -> Dict[str, Pipeline]:
     inference_pipeline = default_pipeline.only_nodes_with_tags("inference")
     deploy_pipeline =  default_pipeline.only_nodes_with_tags("deployment")
     user_pipeline = default_pipeline.only_nodes_with_tags("user")
+    etl_pipeline = default_pipeline.only_nodes_with_tags("etl")
 
     training_pipeline_ml = pipeline_ml_factory(
         training=training_pipeline,
         inference=inference_pipeline,
-        input_name="raw_inputs",
+        input_name="inputs",
         log_model_kwargs=dict(
             registered_model_name="some_registered_model_name",
             artifact_path="new_quickstart_ml_project",
@@ -49,6 +50,7 @@ def register_pipelines() -> Dict[str, Pipeline]:
 
     return {
         "__default__": default_pipeline,
+        "etl": etl_pipeline,
         "training" : training_pipeline_ml,
         "inference": inference_pipeline,
         "deploy" : deploy_pipeline,

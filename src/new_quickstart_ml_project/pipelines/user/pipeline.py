@@ -13,7 +13,7 @@ def create_pipeline(**kwargs):
         [
             node(
                 func=predict_with_mlflow,
-                inputs=["pipeline_inference_model", "raw_inputs"],
+                inputs=["pipeline_inference_model", "inputs"],
                 outputs="predictions",
                 tags=["user"],
             )

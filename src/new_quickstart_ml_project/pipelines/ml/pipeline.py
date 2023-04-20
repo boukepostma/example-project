@@ -13,7 +13,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         [
             node(
                 func = preprocess,
-                inputs = "raw_inputs",
+                inputs = "inputs",
                 outputs= "features",
                 name="preprocess_features",
                 tags=["training", "inference"],
