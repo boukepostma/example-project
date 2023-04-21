@@ -14,7 +14,8 @@
 		"visualstudioexptteam.vscodeintellicode",
 		"njpwerner.autodocstring",
 		"tamasfe.even-better-toml",
-		"samuelcolvin.jinjahtml"
+		"samuelcolvin.jinjahtml",
+		"eamodio.gitlens"
 	],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
