@@ -1,11 +1,9 @@
 """Project pipelines."""
 from platform import python_version
-
 from typing import Dict
 
 from kedro.framework.project import find_pipelines
 from kedro.pipeline import Pipeline
-
 from kedro_mlflow.pipeline import pipeline_ml_factory
 from pip._internal.operations.freeze import freeze
 
@@ -32,8 +30,7 @@ def register_pipelines() -> Dict[str, Pipeline]:
         inference=inference_pipeline,
         input_name="inputs",
         log_model_kwargs=dict(
-            registered_model_name="some_registered_model_name",
-            artifact_path="new_quickstart_ml_project",
+            registered_model_name="new_quickstart_ml_project_model",
             conda_env={
                 "name": "mlflow-env",
                 "channels": ["conda-forge"],

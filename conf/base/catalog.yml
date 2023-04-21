@@ -21,13 +21,13 @@ inputs_source:
 inputs:
   type: pandas.CSVDataSet
   filepath: ${storage_prefix}data/01_raw/iris.csv
+  credentials: abs_creds
   load_args:
     usecols: [sepal_length, sepal_width, petal_length, petal_width]
-  credentials: abs_creds
 
 trained_model:
   type: pickle.PickleDataSet
-  filepath: ${storage_prefix}data/06_models/trained_model.pkl
+  filepath: data/06_models/trained_model.pkl
 
 accuracy:
   type: kedro_mlflow.io.metrics.MlflowMetricDataSet
@@ -36,9 +36,9 @@ pipeline_inference_model:
   type: kedro_mlflow.io.models.MlflowModelLoggerDataSet
   flavor: mlflow.pyfunc
   pyfunc_workflow: python_model
-  artifact_path: new_quickstart_ml_project # the name of your mlflow folder = the model_name in pipeline_ml_factory
   run_id: ${run_id_to_serve}
 
 predictions:
   type: pandas.ParquetDataSet
   filepath: ${storage_prefix}data/08_reporting/predictions.pq
+  credentials: abs_creds
