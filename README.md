@@ -25,6 +25,21 @@ In order to get the best out of the template:
 
 Below there are short instructions on how to get the environment for your new project up and running. Detailed version with some remarks and specific cases described are available in [QuickStart ML Blueprints documentation](https://github.com/getindata/quickstart-ml-blueprints).
 
+## Setting up cloud infrastructure (Terraform)
+1. Create service principal with contributor role and write down the appid, password and tenant 
+```bash
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/b3427a92-a6bb-4354-9822-98b9a61bbe58"
+```
+2. Use these values to fill in `arm_client_id`, `arm_secret_id` and `arm_tenant_id` in `secret.tfvars` respectively
+3. Initialize terraform
+```bash
+terraform init
+```
+3. With `terraform` as current directory, apply terraform script
+```bash
+terraform apply --var-file secret.tfvars
+```
+
 ## Local Setup using VSCode devcontainers (recommended)
 This approach facilitates use of [VSCode devcontainers](https://code.visualstudio.com/docs/devcontainers/containers). It is the easiest way to set up the development environment. 
 
@@ -109,6 +124,19 @@ az ml workspace show --query mlflow_tracking_uri
 3. Place this URI in `mlflow.yml` under `server.mlflow_tracking_uri` 
 
 #### TODO: Things to automate in Terraform:
-	Keyvault access policy
-	storage container with project name (container name with - not _
-	setup az login inside container
+Keyvault access policy
+storage container with project name (container name with - not _
+setup az login inside container
+ask for subscription in starter to fill in README and setup.sh script
+
+Setup flow:
+1. build devcontainer
+2. `.devcontainer/setup.sh`
+  1. azure is logged in
+  2. azure subscription activated
+  3. azure ml settings activated for mlflow
+
+Need from starter:
+ask for subscription & location. 
+auto-fill terraform: use naming convention for workspace and resource group 
+Auto-align workspace/rg name in `.devcontainer/setup.sh`
