@@ -54,3 +54,33 @@ resource "azurerm_machine_learning_compute_instance" "main" {
   machine_learning_workspace_id = azurerm_machine_learning_workspace.default.id
   virtual_machine_size          = "STANDARD_DS2_V2"
 }
+
+resource "azurerm_key_vault_access_policy" "default" {
+  key_vault_id = azurerm_key_vault.default.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = data.azurerm_client_config.current.object_id
+
+  key_permissions = [
+    "Create",
+    "Delete",
+    "Get",
+    "List",
+    "Update"
+  ]
+
+  secret_permissions = [
+    "Get",
+    "Set",
+    "Delete"
+  ]
+}
+
+resource "azurerm_key_vault_secret" "StorageAccessKey" {
+  depends_on = [
+    azurerm_key_vault.default,
+    azurerm_key_vault_access_policy.default
+  ]
+  name = "${azurerm_storage_account.default.name}-key"
+  value = azurerm_storage_account.default.primary_access_key
+  key_vault_id = azurerm_key_vault.default.id
+}
