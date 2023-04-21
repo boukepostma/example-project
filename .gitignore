@@ -171,3 +171,4 @@ mlflow.sqlite.db
 .dive-ci
 
 .terraform
+secret.tfvars
