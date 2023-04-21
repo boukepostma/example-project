@@ -34,4 +34,5 @@ variable  arm_client_id {
 variable  arm_client_secret {
   type        = string
   description = "Secret of service principal in Azure"
+  sensitive = true
 }
